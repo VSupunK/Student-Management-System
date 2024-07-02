@@ -86,8 +86,8 @@ div.content {
                 <!-- The sidebar -->
                 <div class="sidebar">
                     <a class="active" href="#home">Home</a>
-                    <a href="#student">Student</a>
-                    <a href="#teacher">Teacher</a>
+                    <a href="{{ url('/students') }}">Student</a>
+                    <a href="{{ url('/teachers') }}">Teacher</a>
                     <a href="#courses">Courses</a>
                     <a href="#enrollment">Enrollment</a>
                     <a href="#payment">Payment</a>
@@ -95,9 +95,8 @@ div.content {
             </div>
             <div class="col-md-9">
                 <!-- Page content -->
-                <div class="content">
                     @yield('content')
-                </div>
+                
             </div>
         </div>
     </div>
