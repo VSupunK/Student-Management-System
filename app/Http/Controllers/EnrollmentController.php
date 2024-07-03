@@ -3,21 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\Batch;
-use App\Models\Course;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
+use App\Models\Enrollment;
 use Illuminate\View\View;
 
-class BatchController extends Controller
+class EnrollmentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        $batches = Batch::all();
-        return view('batches.index')->with('batches',$batches);
+        $enrollments = Enrollment::all();
+        return view ('enrollments.index')->with('enrollments',$enrollments);
     }
 
     /**
@@ -25,9 +24,7 @@ class BatchController extends Controller
      */
     public function create(): View
     {
-        $courses = Course::pluck('name','id');
-        return view('batches.create', compact('courses'));
-        // return view('batches.create');
+        return view('enrollments.create');
     }
 
     /**
@@ -36,8 +33,8 @@ class BatchController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $input = $request->all();
-        Batch::create($input);
-        return redirect('batches')->with('flash_message', 'Batch Addedd!');
+        Enrollment::create($input);
+        return redirect('enrollments')->with('flash_message', 'Enrollment Addedd!');
     }
 
     /**
@@ -45,8 +42,8 @@ class BatchController extends Controller
      */
     public function show(string $id): View
     {
-        $batches = Batch::find($id);
-        return view('batches.show')->with('batches', $batches);
+        $enrollments = Enrollment::find($id);
+        return view('enrollments.show')->with('enrollments', $enrollments);
     }
 
     /**
@@ -54,8 +51,8 @@ class BatchController extends Controller
      */
     public function edit(string $id): View
     {
-        $batches = Batch::find($id);
-        return view('batches.edit')->with('batches', $batches);
+        $enrollments = Enrollment::find($id);
+        return view('enrollments.edit')->with('enrollments', $enrollments);
     }
 
     /**
@@ -63,18 +60,17 @@ class BatchController extends Controller
      */
     public function update(Request $request, string $id): RedirectResponse
     {
-        $batches = Batch::find($id);
+        $enrollments = Enrollment::find($id);
         $input = $request->all();
-        $batches->update($input);
-        return redirect('batches')->with('flash_message', 'Batch Updated!');  
+        $enrollments->update($input);
+        return redirect('enrollments')->with('flash_message', 'Enrollment Updated!');  
     }
-
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(string $id): RedirectResponse
     {
-        Batch::destroy($id);
-        return redirect('batches')->with('flash_message', 'Batch deleted!'); 
+        Enrollment::destroy($id);
+        return redirect('enrollments')->with('flash_message', 'Enrollment deleted!'); 
     }
 }
