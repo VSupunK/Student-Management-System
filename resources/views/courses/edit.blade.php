@@ -5,16 +5,16 @@
   <div class="card-header">Edit Page</div>
   <div class="card-body">
       
-      <form action="{{ url('courses/' .$teachers->id) }}" method="post">
+      <form action="{{ url('courses/' .$courses->id) }}" method="post">
         {!! csrf_field() !!}
         @method("PATCH")
-        <input type="hidden" name="id" id="id" value="{{$teachers->id}}" id="id" />
+        <input type="hidden" name="id" id="id" value="{{$courses->id}}" id="id" />
         <label>Name</label></br>
-        <input type="text" name="name" id="name" value="{{$teachers->name}}" class="form-control"></br>
-        <label>Address</label></br>
-        <input type="text" name="syllabus" id="syllabus" value="{{$teachers->address}}" class="form-control"></br>
-        <label>Mobile</label></br>
-        <input type="text" name="dusration" id="dusration" value="{{$teachers->mobile}}" class="form-control"></br>
+        <input type="text" name="name" id="name" value="{{$courses->name}}" class="form-control"></br>
+        <label>Syllabus</label></br>
+        <input type="text" name="syllabus" id="syllabus" value="{{$courses->address}}" class="form-control"></br>
+        <label>Duration</label></br>
+        <input type="text" name="duration" id="duration" value="{{$courses->mobile}}" class="form-control"></br>
         <input type="submit" value="Update" class="btn btn-success"></br>
     </form>
    
