@@ -15,9 +15,9 @@
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Name</th>
-                            <th>Course</th>
-                            <th>Start Date</th>
+                            <th>Enrollment No</th>
+                            <th>Paid Date</th>
+                            <th>Amount</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
