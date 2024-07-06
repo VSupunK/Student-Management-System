@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Response;
 use App\Models\Payment;
+use App\Models\Enrollment;
 use Illuminate\View\View;
 
 class PaymentController extends Controller
@@ -16,7 +17,7 @@ class PaymentController extends Controller
     public function index()
     {
         $payments = Payment::all();
-        return view ('enrollments.index')->with('enrollments',$payments);
+        return view ('payments.index')->with('payments',$payments);
     }
 
     /**
@@ -24,8 +25,8 @@ class PaymentController extends Controller
      */
     public function create()
     {
-        $payments = Payment::pluck('enroll_no','id');
-        return view('payments.create', compact('payments'));
+        $enrollments = Enrollment::pluck('enroll_no','id');
+        return view('payments.create', compact('enrollments'));
     }
 
     /**
@@ -53,7 +54,8 @@ class PaymentController extends Controller
     public function edit(string $id)
     {
         $payments = Payment::find($id);
-        return view('payments.edit')->with('payments', $payments);
+        $enrollments = Enrollment::pluck('enroll_no','id');
+        return view('payments.edit')->with('payments', 'enrollments');
     }
 
     /**
